@@ -1,5 +1,8 @@
 class User
   include Mongoid::Document
-  has_and_belongs_to_many :favorite_shops
+
+	field :name
+
+  has_and_belongs_to_many :favorited_shops, :stored_as => :array, :inverse_of => :favoritors, :class_name => "Shop"
   has_one :shop  
 end
